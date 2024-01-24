@@ -1,3 +1,5 @@
+include <defaults.scad>;
+
 /**
  * Simple square box with open top.
  *
@@ -6,7 +8,7 @@
  *     wall_width: Width of the vertical walls.
  *     bottom_height: Bottom thickness.
  */
-module SquareBox(size, wall_width = 1.2, bottom_height = 1.6) {
+module SquareBox(size, wall_width = WALL_WIDTH, bottom_height = BOTTOM_HEIGHT) {
     width = size[0];
     depth = size[1];
     height = size[2];
@@ -46,7 +48,9 @@ module StackableCube(size, stack_size) {
  *     stack_height: Height of the pedestal.
  *     leeway: Empty space between bottom outer dimensions and top inner dimensions to allow some wiggle between the boxes.
  */
-module StackableSquareBox(size, wall_width = 1.2, bottom_height = 1.6, stack_height = 4, leeway = 0.1) {
+module StackableSquareBox(
+    size, wall_width = WALL_WIDTH, bottom_height = BOTTOM_HEIGHT, stack_height = STACK_HEIGHT, leeway = STACK_LEEWAY
+) {
     width = size[0];
     depth = size[1];
     height = size[2] - stack_height;
@@ -69,7 +73,7 @@ module StackableSquareBox(size, wall_width = 1.2, bottom_height = 1.6, stack_hei
  *     size: [width, depth, height] vector.
  *     radius: Vertical edge radius.
  */
-module RoundCube(size, radius) {
+module RoundCube(size, radius = RADIUS) {
     width = size[0];
     depth = size[1];
     height = size[2];
@@ -90,7 +94,7 @@ module RoundCube(size, radius) {
  *     bottom_height: Bottom thickness.
  *     radius: Vertical edge radius. Must be greater than wall_width.
  */
-module RoundBox(size, wall_width = 1.2, bottom_height = 1.6, radius = 2) {
+module RoundBox(size, wall_width = WALL_WIDTH, bottom_height = BOTTOM_HEIGHT, radius = RADIUS) {
     width = size[0];
     depth = size[1];
     height = size[2];
@@ -109,7 +113,7 @@ module RoundBox(size, wall_width = 1.2, bottom_height = 1.6, radius = 2) {
  *     stack_size: [width, depth, height] vector. These are dimensions of the pedestal itself.
  *     radius: Vertical edge outer radius.
  */
-module StackableRoundCube(size, stack_size, radius) {
+module StackableRoundCube(size, stack_size, radius = RADIUS) {
     stack_radius = radius - (size[0] - stack_size[0]) / 2;
 
     translate([ 0, 0, stack_size[2] ]) {
@@ -136,7 +140,10 @@ module StackableRoundCube(size, stack_size, radius) {
  *     stack_height: Height of the pedestal.
  *     leeway: Empty space between bottom outer dimensions and top inner dimensions to allow some wiggle between the boxes.
  */
-module StackableRoundBox(size, radius, wall_width = 1.2, bottom_height = 1.6, stack_height = 4, leeway = 0.1) {
+module StackableRoundBox(
+    size, radius, wall_width = WALL_WIDTH, bottom_height = BOTTOM_HEIGHT, stack_height = STACK_HEIGHT,
+    leeway = STACK_LEEWAY
+) {
     width = size[0];
     depth = size[1];
     height = size[2] - stack_height;
@@ -155,6 +162,17 @@ module StackableRoundBox(size, radius, wall_width = 1.2, bottom_height = 1.6, st
                     size, [ width - 2 * wall_width - 2 * leeway, depth - 2 * wall_width - 2 * leeway, stack_height ],
                     radius = radius - wall_width
                 );
+    }
+}
+
+module RoundSpacer(size, radius = RADIUS, wall_width = WALL_WIDTH) {
+    depth = size[0];
+    width = size[1];
+    height = size[2];
+    difference() {
+        RoundCube(size, radius = radius);
+        translate([ wall_width, wall_width, -1 ])
+            RoundCube([ depth - 2 * wall_width, width - 2 * wall_width, height + 2 ], radius = radius);
     }
 }
 
