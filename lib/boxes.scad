@@ -141,7 +141,7 @@ module StackableRoundCube(size, stack_size, radius = RADIUS) {
  *     leeway: Empty space between bottom outer dimensions and top inner dimensions to allow some wiggle between the boxes.
  */
 module StackableRoundBox(
-    size, radius, wall_width = WALL_WIDTH, bottom_height = BOTTOM_HEIGHT, stack_height = STACK_HEIGHT,
+    size, radius = RADIUS, wall_width = WALL_WIDTH, bottom_height = BOTTOM_HEIGHT, stack_height = STACK_HEIGHT,
     leeway = STACK_LEEWAY
 ) {
     width = size[0];
