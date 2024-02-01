@@ -4,8 +4,8 @@ include <defaults.scad>;
  * Stackable cube (full, no hole).
  *
  * Args:
- *     size: [width, depth, height] vector. These are total dimensions, including the pedestal.
- *     stack_size: [width, depth, height] vector. These are dimensions of the pedestal itself.
+ *     size: [depth, width, height] vector. These are total dimensions, including the pedestal.
+ *     stack_size: [depth, width, height] vector. These are dimensions of the pedestal itself.
  */
 module StackableCube(size, stack_size) {
     translate([ 0, 0, stack_size[2] ]) {
@@ -23,12 +23,12 @@ module StackableCube(size, stack_size) {
  * Simple full cube with rounded vertical edges.
  *
  * Args:
- *     size: [width, depth, height] vector.
+ *     size: [depth, width, height] vector.
  *     radius: Vertical edge radius.
  */
 module RoundCube(size, radius = RADIUS) {
-    width = size[0];
-    depth = size[1];
+    depth = size[0];
+    width = size[1];
     height = size[2];
     hull() {
         translate([ radius, radius, 0 ]) cylinder(height, r = radius);
@@ -42,8 +42,8 @@ module RoundCube(size, radius = RADIUS) {
  * Stackable full cube with rounded vertical edges.
  *
  * Args:
- *     size: [width, depth, height] vector. These are total dimensions, including the pedestal.
- *     stack_size: [width, depth, height] vector. These are dimensions of the pedestal itself.
+ *     size: [depth, width, height] vector. These are total dimensions, including the pedestal.
+ *     stack_size: [depth, width, height] vector. These are dimensions of the pedestal itself.
  *     radius: Vertical edge outer radius.
  */
 module StackableRoundCube(size, stack_size, radius = RADIUS) {

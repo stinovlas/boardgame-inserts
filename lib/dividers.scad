@@ -4,7 +4,7 @@ include <defaults.scad>;
  * Vertical dividers.
  *
  * Args:
- *     size: [width, depth, height] vector of outer box size.
+ *     size: [depth, width, height] vector of outer box size.
  *     dividers: [[x1, x2, ...], [y1, y2, ...]] for x, resp. y dividers.
  *     wall_width: Width of the dividers.
  */
@@ -25,7 +25,7 @@ module Dividers(size, dividers, wall_width = WALL_WIDTH) {
  * Rounded vertical dividers.
  *
  * Args:
- *     size: [width, depth, height] vector of outer box size.
+ *     size: [depth, width, height] vector of outer box size.
  *     dividers: [[x1, x2, ...], [y1, y2, ...]] for x, resp. y dividers.
  *     wall_width: Width of the dividers.
  *     radius: Radius of upper corners.

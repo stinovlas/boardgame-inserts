@@ -6,7 +6,7 @@ include <dividers.scad>;
  * Simple card box with rounded vertical edges.
  *
  * Args:
- *     size: [width, depth, height] vector.
+ *     size: [depth, width, height] vector.
  *     wall_width: Width of the vertical walls (except for one).
  *     bottom_height: Bottom thickness.
  *     radius: Vertical edge radius. Must be greater than wall_width.
@@ -45,7 +45,7 @@ module RoundCardBox(size, dividers = undef, wall_width = WALL_WIDTH, bottom_heig
  * Simple card box.
  *
  * Args:
- *     size: [width, depth, height] vector.
+ *     size: [depth, width, height] vector.
  *     wall_width: Width of the vertical walls (except for one).
  *     bottom_height: Bottom thickness.
  */
