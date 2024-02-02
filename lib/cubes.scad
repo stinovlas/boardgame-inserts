@@ -32,9 +32,9 @@ module RoundCube(size, radius = RADIUS) {
     height = size[2];
     hull() {
         translate([ radius, radius, 0 ]) cylinder(height, r = radius);
-        translate([ width - radius, radius, 0 ]) cylinder(height, r = radius);
-        translate([ radius, depth - radius, 0 ]) cylinder(height, r = radius);
-        translate([ width - radius, depth - radius, 0 ]) cylinder(height, r = radius);
+        translate([ depth - radius, radius, 0 ]) cylinder(height, r = radius);
+        translate([ radius, width - radius, 0 ]) cylinder(height, r = radius);
+        translate([ depth - radius, width - radius, 0 ]) cylinder(height, r = radius);
     }
 }
 

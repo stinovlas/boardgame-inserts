@@ -15,7 +15,7 @@ module SquareBox(size, wall_width = WALL_WIDTH, bottom_height = BOTTOM_HEIGHT) {
     height = size[2];
     difference() {
         cube(size);
-        translate([ wall_width, wall_width, bottom_height ]) color("red")
+        translate([ wall_width, wall_width, bottom_height ])
             cube([ depth - 2 * wall_width, width - 2 * wall_width, height ]);
     }
 }
@@ -40,7 +40,7 @@ module StackableSquareBox(
 
     difference() {
         StackableCube(size, [ depth - 2 * wall_width - 2 * leeway, width - 2 * wall_width - 2 * leeway, stack_height ]);
-        color("red") translate([ wall_width, wall_width, bottom_height ])
+        translate([ wall_width, wall_width, bottom_height ])
             resize([ depth - 2 * wall_width, width - 2 * wall_width, 2 * size[2] ]) StackableCube(
                 size, [ depth - 2 * wall_width - 2 * leeway, width - 2 * wall_width - 2 * leeway, stack_height ]
             );
@@ -62,7 +62,7 @@ module RoundBox(size, wall_width = WALL_WIDTH, bottom_height = BOTTOM_HEIGHT, ra
     height = size[2];
     difference() {
         RoundCube(size, radius = radius);
-        translate([ wall_width, wall_width, bottom_height ]) color("red")
+        translate([ wall_width, wall_width, bottom_height ])
             RoundCube([ depth - 2 * wall_width, width - 2 * wall_width, height ], radius = radius - wall_width);
     }
 }
@@ -92,7 +92,7 @@ module StackableRoundBox(
             size, [ depth - 2 * wall_width - 2 * leeway, width - 2 * wall_width - 2 * leeway, stack_height ],
             radius = radius
         );
-        color("red") translate([ wall_width, wall_width, bottom_height ])
+        translate([ wall_width, wall_width, bottom_height ])
             resize([ depth - 2 * wall_width, width - 2 * wall_width, 2 * size[2] ])
 
                 StackableRoundCube(
