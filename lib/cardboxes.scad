@@ -30,7 +30,7 @@ module RoundCardBox(size, dividers = undef, wall_width = WALL_WIDTH, bottom_heig
     difference() {
         RoundCardBoxOuter([ width, depth, height ], radius = radius);
         translate([ wall_width, wall_width, bottom_height ]) resize([ depth, width - 2 * wall_width, height ])
-            RoundCardBoxOuter([ width, depth, height ], radius = radius);
+            RoundCardBoxOuter([ width, depth, height ], radius = radius - wall_width);
     }
     // translate([ depth - 12, 0, bottom_height - 0.001 ]) cube([ 5, width, 2.5 + 0.001 ]);
     if (dividers != undef) {
