@@ -1,5 +1,6 @@
 include<cubes.scad>;
 include<defaults.scad>;
+include<dividers.scad>;
 
 /**
  * Simple square box with open top.
@@ -56,7 +57,7 @@ module StackableSquareBox(
  *     bottom_height: Bottom thickness.
  *     radius: Vertical edge radius. Must be greater than wall_width.
  */
-module RoundBox(size, wall_width = WALL_WIDTH, bottom_height = BOTTOM_HEIGHT, radius = RADIUS) {
+module RoundBox(size, wall_width = WALL_WIDTH, bottom_height = BOTTOM_HEIGHT, radius = RADIUS, dividers = undef) {
     depth = size[0];
     width = size[1];
     height = size[2];
@@ -64,6 +65,12 @@ module RoundBox(size, wall_width = WALL_WIDTH, bottom_height = BOTTOM_HEIGHT, ra
         RoundCube(size, radius = radius);
         translate([ wall_width, wall_width, bottom_height ])
             RoundCube([ depth - 2 * wall_width, width - 2 * wall_width, height ], radius = radius - wall_width);
+    }
+    if (dividers != undef) {
+        intersection() {
+            RoundCube(size, radius = radius);
+            Dividers(size, dividers = dividers, wall_width = wall_width);
+        }
     }
 }
 
