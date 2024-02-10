@@ -28,9 +28,9 @@ module RoundTray(
         difference() {
             RoundCube(size, radius = radius);
             translate([ wall_width, wall_width, bottom_height ]) hull() {
-                translate([ 0, 0, height ]) RoundCube([ depth, width, 0.001 ], radius = radius);
+                translate([ 0, 0, height ]) RoundCube([ depth, width, 0.001 ], radius = radius * (base_depth / depth));
                 translate([ (slopes > 1) ? (depth - base_depth) / 2 : 0, (width - base_width) / 2, 0 ])
-                    RoundCube([ base_depth, base_width, 0.001 ], radius = radius);
+                    RoundCube([ base_depth, base_width, 0.001 ], radius = radius * (base_width / width));
             }
             translate([ wall_width, wall_width, height + bottom_height - 0.001 ])
                 RoundCube([ depth, width, 2 ], radius = radius);
