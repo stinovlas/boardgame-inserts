@@ -18,7 +18,7 @@ I make these inserts for myself and therefore most of them follow these principl
 
 ## License
 
-Both insert and component library are distributed under [CC BY-SA 4.0].
+Both insert and component library are distributed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 This means that you can distribute, remix, adapt, and build upon the material in any medium or format, so long as attribution is given to the creator. The license allows for commercial use. If you remix, adapt, or build upon the material, you must license the modified material under identical terms.
 
