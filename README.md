@@ -16,6 +16,10 @@ I make these inserts for myself and therefore most of them follow these principl
   - all inserts clearly indicates the edition and inner dimensions of the box
   - please note that even with the same inner box dimensions, the component size can sometimes differ between between different language editions
 
+## Insert catalogue
+
+- [Valley of the Kings / Ve stínu Pyramid](Valley%20of%20the%20Kings/README.md)
+
 ## License
 
 Both insert and component library are distributed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
