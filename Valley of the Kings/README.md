@@ -1,5 +1,6 @@
 # Valley of the Kings
 
+- **Model at Printables:** https://www.printables.com/model/767218-board-game-insert-valley-of-the-kings-ve-stinu-pyr
 - **Inner box dimensions:** \[93mm, 133mm, 33mm\]
 - **Lid lift:** None.
 - **Sleeves:** Probably not. I didn't test it, but the fit is pretty tight even with unsleeved cards.

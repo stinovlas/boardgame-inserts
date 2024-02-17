@@ -1,5 +1,6 @@
 # Age of Galaxy / Galaktické aliance
 
+- **Model at Printables:** https://www.printables.com/model/767405-board-game-insert-age-of-galaxy-galakticke-aliance
 - **Inner box dimensions:** \[145mm, 92mm, 48mm\]
 - **Lid lift:** None.
 - **Sleeves:** No.

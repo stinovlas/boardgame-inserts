@@ -1,5 +1,6 @@
 # Root + expansions
 
+- **Model at Printables:** https://www.printables.com/model/767646-board-game-insert-root-expansions
 - **Inner box dimensions:** \[215mm, 279mm, 68mm\]
 - **Lid lift:** None.
 - **Sleeves:** Maybe. The width of the card box is sufficient, but you'll probably have to leave out one of the two main decks.
