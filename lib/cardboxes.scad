@@ -11,7 +11,10 @@ include<dividers.scad>;
  *     bottom_height: Bottom thickness.
  *     radius: Vertical edge radius. Must be greater than wall_width.
  */
-module RoundCardBox(size, dividers = undef, wall_width = WALL_WIDTH, bottom_height = BOTTOM_HEIGHT, radius = RADIUS) {
+module RoundCardBox(
+    size, dividers = undef, wall_width = WALL_WIDTH, bottom_height = BOTTOM_HEIGHT, radius = RADIUS,
+    corner_radius = RADIUS
+) {
     module RoundCardBoxOuter(size, radius) {
         depth = size[0];
         width = size[1];
@@ -19,7 +22,8 @@ module RoundCardBox(size, dividers = undef, wall_width = WALL_WIDTH, bottom_heig
         hull() {
             translate([ radius, radius, 0 ]) cylinder(height, r = radius);
             translate([ radius, depth - radius, 0 ]) cylinder(height, r = radius);
-            translate([ width - radius, 0, height - radius ]) rotate([ -90, 0, 0 ]) cylinder(depth, r = radius);
+            translate([ width - corner_radius, 0, height - corner_radius ]) rotate([ -90, 0, 0 ])
+                cylinder(depth, r = corner_radius);
             translate([ width - 2 * radius, 0, 0 ]) cube([ 2 * radius, depth, 2 * radius ]);
         }
     }
