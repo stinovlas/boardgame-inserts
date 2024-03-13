@@ -47,7 +47,7 @@ module RoundTray(
 
 module StackableRoundTray(
     size, slopes = 4, angle = 45, dividers = undef, radius = RADIUS, wall_width = WALL_WIDTH,
-    bottom_height = BOTTOM_HEIGHT, stack_height = STACK_HEIGHT, leeway = STACK_LEEWAY
+    bottom_height = BOTTOM_HEIGHT, stack_height = STACK_HEIGHT, leeway = STACK_LEEWAY, dividers_height = undef
 ) {
     assert(slopes == 1 || slopes == 2 || slopes == 4, "Allowed number of slopes is 1, 2 or 4");
 
@@ -84,11 +84,12 @@ module StackableRoundTray(
     }
 
     if (dividers != undef) {
+        div_height = (dividers_height == undef) ? size[2] - stack_height + wall_width * sqrt(2) / 2 : dividers_height;
         intersection() {
             StackableRoundBoxHull(
                 size = size, radius = radius, wall_width = wall_width, stack_height = stack_height, leeway = leeway
             );
-            Dividers(size, dividers = dividers, wall_width = wall_width);
+            Dividers([ size[0], size[1], div_height ], dividers = dividers, wall_width = wall_width);
         }
     }
 }

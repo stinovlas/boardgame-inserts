@@ -126,9 +126,11 @@ module WildTokensBox() { StackableRoundBox([ 53, 59, 19 ]); }
 module PlayerTokensBox() { StackableRoundBox([ 53, 35, 15 ]); }
 
 module ElementTokensBox() {
-    StackableRoundTray([ 53, 152, 12 ], slopes = 2, angle = 45, dividers = [
-        [ 152 / 8, 152 * 2 / 8, 152 * 3 / 8, 152 * 4 / 8, 152 * 5 / 8, 152 * 6 / 8, 152 * 7 / 8 ], []
-    ]);
+    StackableRoundTray(
+        [ 53, 152, 14 ], slopes = 2, angle = 35,
+        dividers = [ [ 152 / 8, 152 * 2 / 8, 152 * 3 / 8, 152 * 4 / 8, 152 * 5 / 8, 152 * 6 / 8, 152 * 7 / 8 ], [] ],
+        dividers_height = 12
+    );
 }
 echo((152 - 9 * WALL_WIDTH) / 8);
 
@@ -147,4 +149,10 @@ module WildTokensBox2() {
     // color("blue") translate([ 59 - 5, 0 ]) cube([ 5, 53, 6 ]);
 }
 
-WildTokensBox2();
+// výška desek duchů: 46 (46.5)
+// echo(50 / 3);
+module ElementTokensBoxSample() {
+    StackableRoundTray([ 54, 152 / 4, 14 ], slopes = 2, angle = 35, dividers = [ [], [54 / 2] ], dividers_height = 12);
+}
+echo((152 - 9 * WALL_WIDTH) / 8);
+ElementTokensBoxSample();
