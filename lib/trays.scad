@@ -54,9 +54,7 @@ module StackableRoundTray(
     depth = size[0] - 2 * wall_width;
     width = size[1] - 2 * wall_width;
     height = size[2] - bottom_height;
-
-    // base_depth = depth - 2 * (tan(angle) * height);
-    // base_width = width - 2 * (tan(angle) * height);
+    div_height = (dividers_height == undef) ? size[2] - stack_height + wall_width * sqrt(2) / 2 : dividers_height;
 
     if (slopes == 4) {
         _RoundTray(base_depth = depth - 2 * (tan(angle) * height), base_width = width - 2 * (tan(angle) * height));
@@ -72,9 +70,12 @@ module StackableRoundTray(
             size, radius = radius, bottom_height = bottom_height - 0.001, stack_height = stack_height, leeway = leeway
         );
         difference() {
-            StackableRoundBoxHull(size, radius = radius, stack_height = stack_height, leeway = leeway);
+            StackableRoundBoxHull(
+                [ size[0], size[1], div_height ], radius = radius, stack_height = stack_height, leeway = leeway
+            );
             translate([ wall_width, wall_width, bottom_height ]) hull() {
-                translate([ 0, 0, height ]) RoundCube([ depth, width, 0.001 ], radius = radius * (base_depth / depth));
+                translate([ 0, 0, div_height - bottom_height ])
+                    RoundCube([ depth, width, 0.001 ], radius = radius * (base_depth / depth));
                 translate([ (slopes > 1) ? (depth - base_depth) / 2 : 0, (width - base_width) / 2, 0 ])
                     RoundCube([ base_depth, base_width, 0.001 ], radius = radius * (base_width / width));
             }
@@ -84,7 +85,6 @@ module StackableRoundTray(
     }
 
     if (dividers != undef) {
-        div_height = (dividers_height == undef) ? size[2] - stack_height + wall_width * sqrt(2) / 2 : dividers_height;
         intersection() {
             StackableRoundBoxHull(
                 size = size, radius = radius, wall_width = wall_width, stack_height = stack_height, leeway = leeway
