@@ -65,6 +65,8 @@ module Box4() {
             import("board2.svg");
             translate([ -0.005, -0.005 ]) square([ 200, 53 ]);
             translate([ 58, -0.005 ]) square([ 200, 200 ]);
+            translate([ -0.005, 195 ]) square([ 200, 200 ]);
+            translate([ -0.005, -0.005 + 53 ]) square([ 5.5, 35 ]);
         }
     }
     linear_extrude(height = BOTTOM_HEIGHT) BoxShape();
@@ -79,14 +81,24 @@ module CardBox1() {
     Dividers([ 281 / 3, 70, BOTTOM_HEIGHT + 3 ], dividers = [ [], [281 / 3 - 13] ]);
 }
 
-module PlayerTokensOuterBox() {
-    difference() {
-        RoundBox([ 114, 60, 18 ]);
-        translate([ 7, 7, -1 ]) RoundCube([ 114 - 14, 60 - 14, 10 ]);
-        translate([ -1, 60 / 2, 24 ]) rotate([ 0, 90, 0 ]) cylinder(d = 30, h = 120);
-    }
+module LowCardBox() {
+    RoundCardBox([ 281 / 3, 70, 49 ], radius = WALL_WIDTH + 0.001, corner_radius = 2.5 * RADIUS);
+    Dividers([ 281 / 3, 70, BOTTOM_HEIGHT + 3 ], dividers = [ [], [281 / 3 - 13] ]);
 }
-module PlayerTokensInnerBox() { StackableRoundBox([ 36.9, 57, 14 ], stack_height = WALL_WIDTH); }
+
+module SmallCardBox() {
+    RoundCardBox(
+        [ 70, 281 / 3, 15 ], radius = WALL_WIDTH + 0.001, corner_radius = 2.5 * RADIUS, dividers = [ [281 / 6], [] ]
+    );
+    Dividers([ 70, 281 / 3, BOTTOM_HEIGHT + 2 ], dividers = [ [], [70 - 10] ]);
+}
+
+module BigCardsHolder() {
+    RoundBox([ 21, 153, 9 ]);
+    translate([ 0, (153 - 80) / 2, 0 ]) RoundCube([ 35, 80, 1 ]);
+    Dividers([ 21, 153, 9 ], dividers = [ [153 / 2], [] ]);
+}
+
 // výška (box na karty - desky ostrova) = 56
 
 // translate([ 0, 70, 13 ]) {
@@ -127,7 +139,8 @@ module PlayerTokensBox() { StackableRoundBox([ 53, 35, 15 ]); }
 
 module ElementTokensBox() {
     StackableRoundTray(
-        [ 54, 152, 14 ], slopes = 2, angle = 37, dividers = [ [ 152 / 4, 152 * 2 / 4, 152 * 3 / 4 ], [54 / 2] ]
+        [ 54, 152, 14 ], slopes = 2, angle = 35, dividers = [ [ 152 / 4, 152 * 2 / 4, 152 * 3 / 4 ], [54 / 2] ],
+        dividers_height = 14
     );
 }
 
@@ -146,6 +159,26 @@ module WildTokensBox2() {
     // color("blue") translate([ 59 - 5, 0 ]) cube([ 5, 53, 6 ]);
 }
 
-// výška desek duchů: 46 (46.5)
-// echo(50 / 3);
-ElementTokensBox();
+// výška desek duchů: 46.5 (47)
+// ElementTokensBox();
+module BadlandsBox() { StackableRoundBox([ 54, 57, 18 ]); }
+
+module SmallPlayerTokensBox() { RoundBox([ 24.6, 51, 16 - BOTTOM_HEIGHT ]); }
+
+module PlayerTokensOuterBox() {
+    difference() {
+        RoundBox([ 152, 54, 25 ]);
+        translate([ 10, 10, -1 ]) RoundCube([ 152 - 20, 54 - 20, 10 ]);
+        translate([ -1, 54 / 2, 26 ]) rotate([ 0, 90, 0 ]) cylinder(d = 30, h = 160);
+    }
+    Dividers([ 152, 54, 25 - 2 - BOTTOM_HEIGHT ], dividers = [ [], [152 / 2] ], wall_width = 1.0);
+}
+PlayerTokensOuterBox();
+
+module PlayerTokensInnerBox() { RoundBox([ 24.7, 51, 25 - 2 - BOTTOM_HEIGHT ], wall_width = 0.86); }
+
+module PowerTokensBox() {
+    StackableRoundTray(
+        [ 54, 152, 23.5 ], slopes = 1, angle = 35, dividers = [ [152 - 70], [] ], dividers_height = 23.5
+    );
+}
