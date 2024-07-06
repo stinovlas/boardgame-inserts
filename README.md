@@ -20,6 +20,7 @@ I make these inserts for myself and therefore most of them follow these principl
 
 - [Age of Galaxy / Galaktické aliance](Age%20of%20Galaxy/README.md)
 - [Root + expansions](Root/README.md)
+- [Startups](Startups/README.md)
 - [Valley of the Kings / Ve stínu Pyramid](Valley%20of%20the%20Kings/README.md)
 
 ## License
