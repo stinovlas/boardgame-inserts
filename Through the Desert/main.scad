@@ -71,31 +71,30 @@ module CamelBox2() {
     RoundBox([ 78, 47.75, height ]);
 }
 
-module LeaderBox() {
+module LeaderBoxNoCutout() {
     length = 84;
     width = 95.5;
     height = 28;
     gr = 1.61803; // golden ratio
 
     RoundBox([ length, width, height ]);
+    union() {
+        Dividers(
+            [ length / gr, width, height ], dividers = [[width / 3, width * 2 / 3], [length / gr]], wall_width = 0.84
+        );
+        translate([ length / gr, 0, 0 ])
+            Dividers([ length - length / gr, width, height ], dividers = [[width / 2], []], wall_width = 0.84);
+    }
+}
+
+module LeaderBox() {
+    length = 84;
+    width = 95.5;
+    height = 28;
+
     difference() {
-        union() {
-            Dividers(
-                [ length / gr, width, height ], dividers = [[width / 3, width * 2 / 3], [length / gr]],
-                wall_width = 0.84
-            );
-            translate([ length / gr, 0, 0 ])
-                Dividers([ length - length / gr, width, height ], dividers = [[width / 2], []], wall_width = 0.84);
-        }
+        LeaderBoxNoCutout();
 
         translate([ length / 2 + 17, width / 2, height - 10 + 0.001 ]) cylinder(h = 10, d = 28.3, center = false);
     }
 }
-
-// OasisBox();
-// LeaderBox();
-// CamelBox1();
-// CamelBox2();
-
-// OasisTokensBox();
-// WateringHoleBox();
